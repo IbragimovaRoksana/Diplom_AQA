@@ -14,5 +14,12 @@ public class StartPage {
     public StartPage(){
         heading.shouldBe(visible);
     }
-
+    public PaymentPage payment(){
+        buttonPayment.click();
+        return new PaymentPage();
+    }
+    public CreditPage credit(){
+        buttonCredit.click();
+        return new CreditPage();
+    }
 }
