@@ -2,6 +2,7 @@ package ru.netology.page;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.Keys;
 import ru.netology.data.CardInfo;
 
 import java.time.Duration;
@@ -12,7 +13,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class CreditPage {
-    private SelenideElement heading = $$("[.heading]").find(exactText("Кредит по данным карты"));
+    private SelenideElement heading = $$("h3.heading").find(exactText("Кредит по данным карты"));
     private SelenideElement cardNumber = $(".input__control[placeholder='0000 0000 0000 0000']");
     private SelenideElement cardMonth = $(".input__control[placeholder='08']");
     private SelenideElement cardYear = $(".input__control[placeholder='22']");
@@ -31,6 +32,20 @@ public class CreditPage {
         cardMonth.setValue(card.getMonth());
         cardYear.setValue(card.getYear());
         cardMaster.setValue(card.getMasterCard());
+        cardCVC.setValue(card.getCvc());
+        continueButton.click();
+    }
+
+    public void dataCreditDoubleCardFilling(CardInfo card) {
+        cardNumber.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+        cardNumber.setValue(card.getNumberCard());
+        cardMonth.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+        cardMonth.setValue(card.getMonth());
+        cardYear.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+        cardYear.setValue(card.getYear());
+        cardMaster.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+        cardMaster.setValue(card.getMasterCard());
+        cardCVC.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
         cardCVC.setValue(card.getCvc());
         continueButton.click();
     }
@@ -76,5 +91,10 @@ public class CreditPage {
     public void checkCreditFullInvalidFields() {
         $$(".input__sub").shouldHave(CollectionCondition.size(5))
                 .shouldHave(CollectionCondition.texts("Поле обязательно для заполнения"));
+    }
+
+    public void checkCreditDoubleEntryData() {
+        $$(".input__sub").shouldBe(CollectionCondition.empty);
+        successMessage.shouldBe(visible, Duration.ofSeconds(15));
     }
 }
