@@ -74,10 +74,6 @@ public class PaymentPage {
         $(".input__sub").shouldHave(text("Истёк срок действия карты")).shouldBe(visible);
     }
 
-    public void checkNullCardMaster() {
-        $(".input__sub").shouldHave(text("Поле обязательно для заполнения")).shouldBe(visible);
-    }
-
     public void checkNullField() {
         $(".input__sub").shouldHave(text("Поле обязательно для заполнения")).shouldBe(visible);
     }

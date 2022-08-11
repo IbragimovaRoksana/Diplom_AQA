@@ -74,7 +74,7 @@ public class CreditPage {
         $(".input__sub").shouldHave(text("Истёк срок действия карты")).shouldBe(visible);
     }
 
-    public void checkCreditNullCardMaster() {
+    public void checkCreditNullField() {
         $(".input__sub").shouldHave(text("Поле обязательно для заполнения")).shouldBe(visible);
     }
 
