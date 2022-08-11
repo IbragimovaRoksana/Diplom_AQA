@@ -210,6 +210,16 @@ class CreditPageTest {
         creditPage.dataCreditCardFilling(cardInfo);
         creditPage.checkCreditInvalidDataFormat();
     }
+    @DisplayName("Отправка пустого поля cvc кода")
+    @Test
+    void shouldCheckInvalidCreditCardNullCVC() {
+        CardInfo cardInfo = new CardInfo(getApprovedCardNumber(), getMonthCard(3),
+                getYearCard(2), getMasterCard(), null);
+        var startPage = new StartPage();
+        var creditPage = startPage.credit();
+        creditPage.dataCreditCardFilling(cardInfo);
+        creditPage.checkCreditNullField();
+    }
 
     @DisplayName("Отправка пустого поля имени владельца")
     @Test

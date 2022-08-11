@@ -218,6 +218,16 @@ class PaymentPageTest {
         paymentPage.dataCardFilling(cardInfo);
         paymentPage.checkInvalidDataFormat();
     }
+    @DisplayName("Отправка пустого поля cvc кода")
+    @Test
+    void shouldCheckInvalidCardNullCVC() {
+        CardInfo cardInfo = new CardInfo(getApprovedCardNumber(), getMonthCard(3),
+                getYearCard(2), getMasterCard(), null);
+        var startPage = new StartPage();
+        var paymentPage = startPage.payment();
+        paymentPage.dataCardFilling(cardInfo);
+        paymentPage.checkNullField();
+    }
 
     @DisplayName("Отправка пустого поля имени владельца")
     @Test
