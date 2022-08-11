@@ -1,5 +1,6 @@
 package ru.netology.page;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
@@ -21,15 +22,16 @@ class CreditPageTest {
 
     @BeforeEach
     public void setUp() {
-        //Configuration.headless = true;
+        Configuration.headless = true;
         open("http://localhost:8080");
     }
 
     @AfterAll
     static void tearDownAll() throws SQLException {
         SelenideLogger.removeListener("allure");
-        // DatabaseConnection.deleteTables();
+        DatabaseConnection.deleteTables();
     }
+
     @DisplayName("Проверка карты со статусом APPROVED")
     @Test
     void shouldDataCreditCardFillingApproved() throws SQLException {
@@ -53,6 +55,7 @@ class CreditPageTest {
         String status = DatabaseConnection.getCreditStatus();
         assertEquals("DECLINED", status);
     }
+
     @DisplayName("Отправка пустой формы")
     @Test
     void shouldNullCreditDataFilling() {
@@ -61,6 +64,7 @@ class CreditPageTest {
         creditPage.nullDataFilling();
         creditPage.checkCreditFullInvalidFields();
     }
+
     @DisplayName("Проверка успешной отправки формы с окончанием карты в текущем месяце")
     @Test
     void shouldSuccessCreditPayment() {
@@ -71,6 +75,7 @@ class CreditPageTest {
         creditPage.dataCreditCardFilling(cardInfo);
         creditPage.successCreditPayment();
     }
+
     @DisplayName("Проверка получения сообщения со статусом Ошибка")
     @Test
     void shouldFailCreditPayment() {
@@ -81,6 +86,7 @@ class CreditPageTest {
         creditPage.dataCreditCardFilling(cardInfo);
         creditPage.failCreditPayment();
     }
+
     @DisplayName("Отправка короткого номера карты")
     @Test
     void shouldShortInvalidDataFormat() {
@@ -91,6 +97,7 @@ class CreditPageTest {
         creditPage.dataCreditCardFilling(cardInfo);
         creditPage.checkCreditInvalidDataFormat();
     }
+
     @DisplayName("Отправка пустого поля номера карты")
     @Test
     void shouldNullDataCreditCardFormat() {
@@ -101,6 +108,7 @@ class CreditPageTest {
         creditPage.dataCreditCardFilling(cardInfo);
         creditPage.checkCreditNullField();
     }
+
     @DisplayName("Отправка некорректного номера карты")
     @Test
     void shouldCheckCreditInvalidDataFormat() {
@@ -109,7 +117,7 @@ class CreditPageTest {
         var startPage = new StartPage();
         var creditPage = startPage.credit();
         creditPage.dataCreditCardFilling(cardInfo);
-        creditPage.checkCreditInvalidDataFormat();
+        creditPage.failCreditPayment();
     }
 
     @DisplayName("Отправка месяца со значением 00")
@@ -210,6 +218,7 @@ class CreditPageTest {
         creditPage.dataCreditCardFilling(cardInfo);
         creditPage.checkCreditInvalidDataFormat();
     }
+
     @DisplayName("Отправка пустого поля cvc кода")
     @Test
     void shouldCheckInvalidCreditCardNullCVC() {

@@ -22,14 +22,14 @@ class PaymentPageTest {
 
     @BeforeEach
     public void setUp() {
-        //Configuration.headless = true;
+        Configuration.headless = true;
         open("http://localhost:8080");
     }
 
     @AfterAll
     static void tearDownAll() throws SQLException {
         SelenideLogger.removeListener("allure");
-        // DatabaseConnection.deleteTables();
+        DatabaseConnection.deleteTables();
     }
 
     @DisplayName("Проверка карты со статусом APPROVED")
@@ -117,7 +117,7 @@ class PaymentPageTest {
         var startPage = new StartPage();
         var paymentPage = startPage.payment();
         paymentPage.dataCardFilling(cardInfo);
-        paymentPage.checkInvalidDataFormat();
+        paymentPage.failPayment();
     }
 
     @DisplayName("Отправка месяца со значением 00")
@@ -218,6 +218,7 @@ class PaymentPageTest {
         paymentPage.dataCardFilling(cardInfo);
         paymentPage.checkInvalidDataFormat();
     }
+
     @DisplayName("Отправка пустого поля cvc кода")
     @Test
     void shouldCheckInvalidCardNullCVC() {
