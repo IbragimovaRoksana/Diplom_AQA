@@ -194,7 +194,7 @@ class CreditPageTest {
         var startPage = new StartPage();
         var creditPage = startPage.credit();
         creditPage.dataCreditCardFilling(cardInfo);
-        creditPage.checkCreditInvalidDataFormat();
+        creditPage.checkCreditInvalidCardExpiryMonth();
     }
 
     @DisplayName("Отправка пустого значения года")

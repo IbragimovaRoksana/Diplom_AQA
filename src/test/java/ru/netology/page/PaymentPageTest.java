@@ -194,7 +194,7 @@ class PaymentPageTest {
         var startPage = new StartPage();
         var paymentPage = startPage.payment();
         paymentPage.dataCardFilling(cardInfo);
-        paymentPage.checkInvalidDataFormat();
+        paymentPage.checkInvalidCardExpiryMonth();
     }
 
     @DisplayName("Отправка пустого значения года")
