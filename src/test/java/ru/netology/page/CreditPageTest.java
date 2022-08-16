@@ -293,7 +293,7 @@ class CreditPageTest {
         var startPage = new StartPage();
         var creditPage = startPage.credit();
         creditPage.dataCreditCardFilling(cardInfo);
-        creditPage.checkCreditIncorrectLanguage();
+        creditPage.checkCreditNullField();
     }
 
     @DisplayName("Отправка имени владельца одним символом")
