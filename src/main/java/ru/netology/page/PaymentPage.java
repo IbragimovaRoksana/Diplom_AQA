@@ -55,11 +55,11 @@ public class PaymentPage {
     }
 
     public void successPayment() {
-        successMessage.shouldBe(visible, Duration.ofSeconds(15));
+        successMessage.shouldBe(visible, Duration.ofSeconds(20));
     }
 
     public void failPayment() {
-        failMessage.shouldBe(visible, Duration.ofSeconds(15));
+        failMessage.shouldBe(visible, Duration.ofSeconds(20));
     }
 
     public void checkInvalidDataFormat() {
@@ -90,6 +90,10 @@ public class PaymentPage {
 
     public void checkFullInvalidFields() {
         $$(".input__sub").shouldHave(CollectionCondition.size(5)).excludeWith(text("Поле обязательно для заполнения"));
+    }
+
+    public void checkNullCvc() {
+        $$(".input__sub").get(1).shouldHave(text("Поле обязательно для заполнения"));
     }
 
     public void checkDoubleEntryData() {

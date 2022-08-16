@@ -227,7 +227,7 @@ class PaymentPageTest {
         var startPage = new StartPage();
         var paymentPage = startPage.payment();
         paymentPage.dataCardFilling(cardInfo);
-        paymentPage.checkNullField();
+        paymentPage.checkNullCvc();
     }
 
     @DisplayName("Отправка пустого поля имени владельца")

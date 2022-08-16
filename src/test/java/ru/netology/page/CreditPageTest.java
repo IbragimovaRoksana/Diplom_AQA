@@ -227,7 +227,7 @@ class CreditPageTest {
         var startPage = new StartPage();
         var creditPage = startPage.credit();
         creditPage.dataCreditCardFilling(cardInfo);
-        creditPage.checkCreditNullField();
+        creditPage.checkCreditNullCvc();
     }
 
     @DisplayName("Отправка пустого поля имени владельца")

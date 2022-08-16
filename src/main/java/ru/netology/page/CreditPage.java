@@ -92,7 +92,9 @@ public class CreditPage {
         $$(".input__sub").shouldHave(CollectionCondition.size(5))
                 .shouldHave(CollectionCondition.texts("Поле обязательно для заполнения"));
     }
-
+    public void checkCreditNullCvc() {
+        $$(".input__sub").get(1).shouldHave(text("Поле обязательно для заполнения"));
+    }
     public void checkCreditDoubleEntryData() {
         $$(".input__sub").shouldBe(CollectionCondition.empty);
         successMessage.shouldBe(visible, Duration.ofSeconds(15));
