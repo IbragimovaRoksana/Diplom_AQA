@@ -55,9 +55,9 @@
 - После работы с отчетом Allure нажать Сtrl+C для выхода из режима генерации отчета в терминал.
 **Формирование отчета postgresql**
 - В файле application.properties  в строке spring.datasource.url прописываем jdbc:postgresql://localhost:5432/app
-- Открыть новую вкладку в терминале (+) java -jar aqa-shop.jar
+- В классе Database изменить значение переменной private static String url = "jdbc:postgresql://localhost:5432/app"
 - Открыть в терминале (+) новую вкладку и ввести команду  ./gradlew clean test "-Ddb.url=jdbc:postgresql://localhost:5432/app" "-Ddb.user=app" "-Ddb.password=pass"
 - После прохождения тестов в терминале ввести команду ./gradlew allureServe
 - После прохождения всех тестов автоматически откроется браузер с генерированным отчетом Allure Report. 
 - После работы с отчетом Allure нажать Сtrl+C для выхода из режима генерации отчета в терминал.
-  После работы с отчетом Allure нажимаем Ctl + C
+  
