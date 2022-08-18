@@ -89,7 +89,7 @@ public class PaymentPage {
     }
 
     public void checkFullInvalidFields() {
-        $$(".input__sub").shouldHave(CollectionCondition.size(5)).excludeWith(text("Поле обязательно для заполнения"));
+        $$(".input__sub").shouldHave(CollectionCondition.size(5)).shouldHave(CollectionCondition.texts("Поле обязательно для заполнения"));
     }
 
     public void checkNullCvc() {
