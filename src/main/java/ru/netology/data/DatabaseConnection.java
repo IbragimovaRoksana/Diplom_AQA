@@ -8,9 +8,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static String url = "jdbc:mysql://localhost:3306/app";
-    private static String username = "app";
-    private static String password = "pass";
+    private static String url = System.getProperty("db.url");
+    private static String username = System.getProperty("db.user");
+    private static String password = System.getProperty("db.password");
 
     private DatabaseConnection() {
     }
