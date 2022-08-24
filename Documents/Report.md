@@ -40,3 +40,6 @@
 ![Allure PosgreSQL](https://user-images.githubusercontent.com/73775733/185326291-fbb3b229-5a25-426a-a8c3-9646946a2b90.jpg)
 ![Allure PosgreSQL2](https://user-images.githubusercontent.com/73775733/185326355-60dc5c76-822d-4120-959f-b6b2bfc8fe57.jpg)
 
+### 6. Интеграция с Appveyor CI
+[![Build status](https://ci.appveyor.com/api/projects/status/jr3f171nmlu93x12?svg=true)](https://ci.appveyor.com/project/IbragimovaRoksana/diplom-aqa)
+Ссылка на файл с логами сборки проекта: [log.txt](https://github.com/IbragimovaRoksana/Diplom_AQA/blob/master/Documents/log.txt)
