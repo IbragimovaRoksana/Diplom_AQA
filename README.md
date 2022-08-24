@@ -1,4 +1,5 @@
 # Дипломный проект профессии «Тестировщик»
+[![Build status](https://ci.appveyor.com/api/projects/status/jr3f171nmlu93x12?svg=true)](https://ci.appveyor.com/project/IbragimovaRoksana/diplom-aqa)
 ## Краткое описание проекта
 Дипломный проект представляет собой автоматизацию тестирования комплексного сервиса покупки тура, взаимодействующего с СУБД и API Банка.
 
